@@ -145,6 +145,7 @@ def submit_review(request, slug):
     
     return render(request, 'commerce/submit_review.html', context)
 
+
 @login_required(login_url="/login/")
 def cart_add(request, id):
     cart = Cart(request)

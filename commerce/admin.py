@@ -71,6 +71,7 @@ class Product_Admin(admin.ModelAdmin):
     inlines = (Product_Images,Additional_Informations)
     list_display = ('product_name','price', 'Categories','color', 'section')
     list_editable = ('Categories', 'section', 'color')
+
  
 class OrderResource(resources.ModelResource):
 
