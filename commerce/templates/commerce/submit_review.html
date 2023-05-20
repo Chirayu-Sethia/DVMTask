@@ -1,0 +1,40 @@
+{% extends "commerce/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<div class="page-banner-area page-banner-height-2" data-background="{% static 'commerce/assets/img/banner/page-banner-4.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-banner-content text-center">
+                    <h4 class="breadcrumb-title">Add a Review</h4>
+                    <div class="breadcrumb-two">
+                        <nav>
+                           <nav class="breadcrumb-trail breadcrumbs">
+                              <ul class="breadcrumb-menu">
+                                 <li class="breadcrumb-trail">
+                                    <a href="{% url 'home' %}"><span>Home</span></a>
+                                 </li>
+                                 <li class="trail-item">
+                                    <span>My account</span>
+                                 </li>
+                              </ul>
+                           </nav> 
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Submit review form -->
+<div class="submit-review">
+    <h3>Add a Review</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit">Submit Review</button>
+    </form>
+</div>
+{% endblock %}

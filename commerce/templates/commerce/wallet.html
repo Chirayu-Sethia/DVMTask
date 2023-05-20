@@ -1,0 +1,40 @@
+{% extends "commerce/base.html" %}
+{% load static %}
+{% block content %}
+<div class="page-banner-area page-banner-height-2" data-background="{% static 'commerce/assets/img/banner/page-banner-4.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-banner-content text-center">
+                    <h4 class="breadcrumb-title">My Account --- WALLET</h4>
+                    <div class="breadcrumb-two">
+                        <nav>
+                           <nav class="breadcrumb-trail breadcrumbs">
+                              <ul class="breadcrumb-menu">
+                                 <li class="breadcrumb-trail">
+                                    <a href="{% url 'home' %}"><span>Home</span></a>
+                                 </li>
+                                 <li class="trail-item">
+                                    <span>My account</span>
+                                 </li>
+                              </ul>
+                           </nav> 
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <p></p>
+    <p style="font-size:40px">Wallet Balance: Rs. {{ wallet_balance }}</p>
+</div>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        <p style="font-size:20px">
+        <a class="ml-2" href="{% url 'add_money' %}" style="font-size:30px; color:red">----> Add Money To Wallet</a>
+        </p>
+    </small>
+</div>
+{% endblock %}

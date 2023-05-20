@@ -1,0 +1,39 @@
+{% extends "commerce/base.html" %}
+{% load static %}
+{% block content %}
+<div class="page-banner-area page-banner-height-2" data-background="{% static 'commerce/assets/img/banner/page-banner-4.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-banner-content text-center">
+                    <h4 class="breadcrumb-title">My Account ---- ADD MONEY TO WALLET</h4>
+                    <div class="breadcrumb-two">
+                        <nav>
+                           <nav class="breadcrumb-trail breadcrumbs">
+                              <ul class="breadcrumb-menu">
+                                 <li class="breadcrumb-trail">
+                                    <a href="{% url 'home' %}"><span>Home</span></a>
+                                 </li>
+                                 <li class="trail-item">
+                                    <span>My account</span>
+                                 </li>
+                              </ul>
+                           </nav> 
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <p></p>
+        <label for="amount" style="font-size:40px">Amount:</label>
+        <input type="number" id="amount" name="amount" step="0.01" required>
+        <button type="submit" style="font-size:40px; color:red">Add Money</button>
+      </form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,46 @@
+{% extends "commerce/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static%}
+<div class="page-banner-area page-banner-height-2" data-background="{% static 'commerce/assets/img/banner/page-banner-4.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-banner-content text-center">
+                    <h4 class="breadcrumb-title">Update account / Logout</h4>
+                    <div class="breadcrumb-two">
+                        <nav>
+                           <nav class="breadcrumb-trail breadcrumbs">
+                              <ul class="breadcrumb-menu">
+                                 <li class="breadcrumb-trail">
+                                    <a href="{% url 'home' %}"><span>Home</span></a>
+                                 </li>
+                                 <li class="trail-item">
+                                    <span>My account</span>
+                                 </li>
+                              </ul>
+                           </nav> 
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" style="font-size:30px">Edit your Details</legend>
+                {{ u_form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Update</button>
+            </div>
+        </form>
+        <div class="col-6">
+            <a href="{% url 'logout' %}" class="btn btn-danger w-30 h-100 rounded">Logout</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "commerce/base.html" %}
+{% load static %}
+{% block content %}
+<div class="page-banner-area page-banner-height-2" data-background="{% static 'commerce/assets/img/banner/page-banner-4.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-banner-content text-center">
+                    <h4 class="breadcrumb-title">Ordered Products</h4>
+                    <div class="breadcrumb-two">
+                        <nav>
+                           <nav class="breadcrumb-trail breadcrumbs">
+                              <ul class="breadcrumb-menu">
+                                 <li class="breadcrumb-trail">
+                                    <a href="{% url 'home' %}"><span>Home</span></a>
+                                 </li>
+                                 <li class="trail-item">
+                                    <span>My account</span>
+                                 </li>
+                              </ul>
+                           </nav> 
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="cart-area pt-120 pb-120">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form action="#">
+                    <div class="table-content table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="product-thumbnail">Images</th>
+                                    <th class="cart-product-name">Product</th>
+                                    <th class="product-price">Unit Price</th>
+                                    <th class="product-quantity">Quantity</th>
+                                    <th class="product-subtotal">Total</th>
+                                    <th class="date-of-order">Date</th>
+                                    <th class="time-of-order">Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in ordered_products %}
+                                <tr id="id{{ order.id }}">
+                                    <td class="product-thumbnail"><a href="#"><img src="{{ order.product.featured_image.url }}" alt=""></a></td>
+                                    <td class="product-name"><a href="#">{{ order.product }}</a></td>
+                                    <td class="product-price"><span class="amount">Rs. {{ order.price }}</span></td>
+                                    <td class="product-quantity">
+                                        <div class="row w-100">
+                                            <div class="col-4">
+                                                <input type="text" value="{{ order.quantity }}" class="form-control border-0">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal"><span class="amount">Rs. {{ order.total }}</span></td>
+                                    <td class="product-date">{{ order.date|date:"d-m-Y" }}</td>
+                                    <td class="product-time">{{ order.date|time:"H:i:s" }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

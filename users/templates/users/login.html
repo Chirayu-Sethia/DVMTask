@@ -1,0 +1,60 @@
+{% extends "commerce/base.html" %}
+{% load socialaccount %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static%}
+<div class="page-banner-area page-banner-height-2" data-background="{% static 'commerce/assets/img/banner/page-banner-4.jpg' %}">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="page-banner-content text-center">
+                    <h4 class="breadcrumb-title">My account</h4>
+                    <div class="breadcrumb-two">
+                        <nav>
+                           <nav class="breadcrumb-trail breadcrumbs">
+                              <ul class="breadcrumb-menu">
+                                 <li class="breadcrumb-trail">
+                                    <a href="{% url 'home' %}"><span>Home</span></a>
+                                 </li>
+                                 <li class="trail-item">
+                                    <span>My account</span>
+                                 </li>
+                              </ul>
+                           </nav> 
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="content-section">
+        <h2>Login with Google</h2>
+        <a href="{% provider_login_url 'google' %}" class="btn btn-outline-info">Login with Google</a>
+        <hr>
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4" style="font-size=30px">Log In</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Login</button>
+                <small class="text-muted ml-2">
+                    <a href="{% url 'password_reset' %}" style="font-size:15px; color:blue">   Forgot Password?</a>
+                </small>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                <p style="font-size:20px">
+                Need An Account? <a class="ml-2" href="{% url 'register' %}" style="font-size:20px; color:red">Sign Up Now</a>
+                </p>
+            </small>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
